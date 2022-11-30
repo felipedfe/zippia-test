@@ -3,3 +3,25 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+.job-container {
+  margin-top: 20px;
+  padding: 20px;
+  width: 50%;
+  height: 170px;
+  border: solid 1px lightgray;
+  border-left: solid 6px darkblue;
+  border-radius: 10px;
+}
+
+.job-container > * {
+  margin-top: 5px;
+}
+
+.job-description-container {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
