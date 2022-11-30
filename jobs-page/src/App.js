@@ -1,42 +1,61 @@
 import { useState, useEffect } from 'react'
 import getJobs from './services/api';
 import CardJob from './components/CardJob';
-import SearchByCompany from './components/SearchByCompany';
+import SelectCompany from './components/SelectCompany';
 import './App.css';
 
 function App() {
   const [jobsList, setJobsList] = useState([]);
-  const [companyFilter, setCompanyFilter] = useState('');
+  const [selectedCompany, setSelectedCompany] = useState('');
+  const [recentJobs, setRecentJobs] = useState(false);
 
   const handleInputChange = (value) => {
     console.log(value)
-    setCompanyFilter(value)
+    setSelectedCompany(value)
   };
 
-  const filterByCompany = (jobsList) => {
-    return jobsList.filter((job) => job.companyName.includes(companyFilter));
+  const toggleButton = () => {
+    setRecentJobs((prevState) => !prevState)
+    console.log(recentJobs);
+  };
+
+  const filterDate = (list) => {
+    return list.filter((job) => {
+      return job.postedDate.includes("d")
+        && parseInt(job.postedDate.split("d")[0]) <= 7
+    })
+  };
+
+  const filter = () => {
+    const filteredList = jobsList.filter((job) => job.companyName.includes(selectedCompany));
+    if (recentJobs) {
+      return filterDate(filteredList);
+    }
+    return filteredList;
   };
 
   useEffect(() => {
     getJobs().then((data => setJobsList(data.data.jobs)));
   }, []);
 
-
   return (
     <div className="App">
-      <SearchByCompany jobsList={jobsList} handleInputChange={handleInputChange}/>
-      {/* {jobsList.map((job) => 
-        <CardJob 
-        key={job.jobId}
-        job={job}
-        />)} */}
-      {filterByCompany(jobsList)
+      <SelectCompany jobsList={jobsList} handleInputChange={handleInputChange}/>
+
+      <button
+        className="recent-jobs-btn"
+        type="button"
+        onClick={toggleButton}
+      >
+        Recent Jobs
+      </button>
+
+      {filter()
         .map((job) => 
         <CardJob 
         key={job.jobId}
         job={job}
-        />)
-      }
+        />)}
     </div>
   );
 }

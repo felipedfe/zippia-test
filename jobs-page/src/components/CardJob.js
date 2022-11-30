@@ -1,6 +1,13 @@
 function CardJob (props) {
   const { job } = props;
-
+  const { postedDate } = job;
+  // const day = postedDate.split('d')
+  // console.log(day)
+  // if (postedDate.includes("d")) {
+  //   const daysAgo = postedDate.split('d');
+  //   console.log(daysAgo);
+  // };
+  
   return (
   <section className="job-container">
     <h3 className="job-title">{job.jobTitle}</h3>

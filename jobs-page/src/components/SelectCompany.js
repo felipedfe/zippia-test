@@ -18,7 +18,6 @@ function SearchByCompany(props) {
         <select
           className="companies-input"
           value={inputValue}
-          // onChange={({ target }) => handleInputChange(target)}
           onChange= {handleValueChange}
         >
           <option value="">All Companies</option>
@@ -26,7 +25,6 @@ function SearchByCompany(props) {
             <option
               key={index}
               name={companyName}
-              // onChange={(e) => handleValueChange(e)}
             >
               {companyName}
             </option>
