@@ -5,7 +5,7 @@ const instance = axios.create({
 });
 
 const getJobs = async () => instance
-  .post('/login', {
+  .post('/', {
     "companySkills": true,
     "dismissedListingHashes": [],
     "fetchJobDesc": true,
