@@ -4,10 +4,10 @@ const express = require('express');
 
 const app = express();
 app.use(express.json());
-app.use(express.static('express'));
+app.use(express.static('/test/jobs'));
 
 app.use('/', (_req, res) => {
-  res.sendFile(path.join(__dirname + '/test/jobs/index.html'));
+  res.sendFile(path.join(__dirname + '/test/jobs/index-test.html'));
 });
 
 const server = http.createServer(app);
