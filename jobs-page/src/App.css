@@ -4,18 +4,25 @@
   box-sizing: border-box;
 }
 
+body {
+  background-color: rgb(255, 248, 225);
+}
+
 .job-container {
-  margin-top: 20px;
+  background-color: white;
+  margin: auto;
+  margin-top: 10px;
   padding: 20px;
   width: 50%;
-  height: 170px;
+  height: 190px;
   border: solid 1px lightgray;
   border-left: solid 6px darkblue;
   border-radius: 10px;
+  box-shadow: 0 15px 20px -19px rgb(0 0 0 / 20%);
 }
 
 .job-container > * {
-  margin-top: 5px;
+  margin-top: 8px;
 }
 
 .job-description-container {
@@ -24,4 +31,9 @@
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
+}
+
+.job-days-ago {
+  font-size: 0.8rem;
+  color: rgb(100, 100, 100);
 }

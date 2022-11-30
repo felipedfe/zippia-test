@@ -1,6 +1,6 @@
 function CardJob (props) {
   const { job } = props;
-  console.log(job);
+
   return (
   <section className="job-container">
     <h3 className="job-title">{job.jobTitle}</h3>
@@ -8,6 +8,8 @@ function CardJob (props) {
     <div className="job-description-container">
       <p dangerouslySetInnerHTML={ { __html: job.jobDescription } }></p>
     </div>
+    {/* <p className="job-days-ago">{new Date(job.postingDate).getUTCDate()}</p> */}
+    <p className="job-days-ago">{`posted ${job.postedDate}`}</p>
   </section>
   )
 }
