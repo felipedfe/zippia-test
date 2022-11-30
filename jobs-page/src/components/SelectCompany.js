@@ -3,7 +3,6 @@ import { useState } from "react";
 function SearchByCompany(props) {
   const { jobsList, handleInputChange } = props;
   const [inputValue, setInputValue] = useState('All Companies');
-  console.log(props)
 
   const handleValueChange = ({ target }) => {
     const { value } = target;

@@ -8,6 +8,7 @@ function App() {
   const [jobsList, setJobsList] = useState([]);
   const [selectedCompany, setSelectedCompany] = useState('');
   const [recentJobs, setRecentJobs] = useState(false);
+  const [buttonText, setButtonText] = useState("Recent Jobs")
 
   const handleInputChange = (value) => {
     console.log(value)
@@ -16,13 +17,14 @@ function App() {
 
   const toggleButton = () => {
     setRecentJobs((prevState) => !prevState)
-    console.log(recentJobs);
+    recentJobs ? setButtonText("Recent Jobs") : setButtonText("All Jobs")
   };
 
   const filterDate = (list) => {
     return list.filter((job) => {
-      return job.postedDate.includes("d")
-        && parseInt(job.postedDate.split("d")[0]) <= 7
+      return (job.postedDate.includes("d")
+        && parseInt(job.postedDate.split("d")[0]) <= 7) ||
+        job.postedDate.includes("h")
     })
   };
 
@@ -39,24 +41,26 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
-      <SelectCompany jobsList={jobsList} handleInputChange={handleInputChange}/>
-
-      <button
-        className="recent-jobs-btn"
-        type="button"
-        onClick={toggleButton}
-      >
-        Recent Jobs
-      </button>
-
+    <main>
+      <nav>
+        <SelectCompany jobsList={jobsList} handleInputChange={handleInputChange} />
+        <button
+          className="recent-jobs-btn"
+          type="button"
+          onClick={toggleButton}
+        >
+          {buttonText}
+        </button>
+      </nav>
+      <section className="jobs-list">
       {filter()
-        .map((job) => 
-        <CardJob 
-        key={job.jobId}
-        job={job}
-        />)}
-    </div>
+        .map((job) =>
+          <CardJob
+            key={job.jobId}
+            job={job}
+          />)}
+      </section>
+    </main>
   );
 }
 

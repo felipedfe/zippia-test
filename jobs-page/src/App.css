@@ -8,10 +8,37 @@ body {
   background-color: rgb(255, 248, 225);
 }
 
+nav {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.recent-jobs-btn {
+  border: none;
+  background-color: darkblue;
+  color: white;
+  font-weight: 800;
+  padding: 10px;
+  border-radius: 10px;
+  width: 100px;
+  margin-left: 10px;
+}
+
+label {
+  font-weight: 500;
+}
+
+.companies-input {
+  height: 30px;
+  margin-left: 5px;
+}
+
 .job-container {
   background-color: white;
   margin: auto;
-  margin-top: 10px;
+  margin-bottom: 10px;
   padding: 20px;
   width: 50%;
   height: 190px;
