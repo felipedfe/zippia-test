@@ -40,7 +40,7 @@ label {
   margin: auto;
   margin-bottom: 10px;
   padding: 20px;
-  width: 50%;
+  width: 60%;
   height: 190px;
   border: solid 1px lightgray;
   border-left: solid 6px darkblue;
@@ -63,4 +63,25 @@ label {
 .job-days-ago {
   font-size: 0.8rem;
   color: rgb(100, 100, 100);
+}
+
+/* Media Query */
+@media all and (max-width: 900px) {
+  .job-container {
+    width: 90%;
+  }
+}
+
+@media all and (max-width: 550px) {
+  nav {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  .recent-jobs-btn, select {
+    width: 100%;
+  }
+  .job-container {
+    height: 210px;
+  }
 }
