@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function SearchByCompany(props) {
+function SelectCompany(props) {
   const { jobsList, handleInputChange } = props;
   const [inputValue, setInputValue] = useState('All Companies');
 
@@ -11,7 +11,7 @@ function SearchByCompany(props) {
   };
 
   return (
-    <section>
+    <section className="companies-select">
       <label>
         Search by company:
         <select
@@ -34,4 +34,4 @@ function SearchByCompany(props) {
   )
 }
 
-export default SearchByCompany;
+export default SelectCompany;

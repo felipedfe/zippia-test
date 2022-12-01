@@ -1,14 +1,14 @@
-function CardJob (props) {
-  const { job } = props;
+function CardJob ({ job }) {
+  const { jobTitle, companyName, jobDescription, postedDate } = job;
   
   return (
   <section className="job-container">
-    <h3 className="job-title">{job.jobTitle}</h3>
-    <h5 className="job-companyName">{job.companyName}</h5>
+    <h3 className="job-title">{jobTitle}</h3>
+    <h5 className="job-companyName">{companyName}</h5>
     <div className="job-description-container">
-      <p dangerouslySetInnerHTML={ { __html: job.jobDescription } }></p>
+      <p dangerouslySetInnerHTML={ { __html: jobDescription } }></p>
     </div>
-    <p className="job-days-ago">{`posted ${job.postedDate}`}</p>
+    <p className="job-days-ago">{`posted ${postedDate}`}</p>
   </section>
   )
 }
