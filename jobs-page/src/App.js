@@ -26,8 +26,8 @@ function App() {
   // o valor da chave postedDate, resolvi usá-la para filtrar as vagas mais recentes
   const filterDate = (list) => {
     return list.filter((job) => {
-      return (job.postedDate.includes("d")
-        && parseInt(job.postedDate.split("d")[0]) <= 7) ||
+      return (job.postedDate.includes("d") && 
+        parseInt(job.postedDate.split("d")[0]) <= 7) || 
         job.postedDate.includes("h")
     })
   };
@@ -48,7 +48,6 @@ function App() {
     getJobs().then((data => setJobsList(data.data.jobs)));
   }, []);
   
-
   return (
     <main>
       <nav>
@@ -62,7 +61,7 @@ function App() {
         </button>
       </nav>
       <section className="jobs-list">
-      { filter().map((job) => <CardJob key={job.jobId} job={job}/>)}
+      {filter().map((job) => <CardJob key={job.jobId} job={job}/>)}
       </section>
     </main>
   );
