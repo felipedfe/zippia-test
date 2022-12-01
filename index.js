@@ -7,12 +7,12 @@ const app = express();
 // Adicionei o Cors, pois estava tendo problemas com o acesso à API
 app.use(cors());
 app.use(express.json());
-app.use(express.static('/test/jobs'));
+// app.use(express.static('/jobs-page/build'));
 
 // Aqui é onde o site estático é acessado
-app.use('/', (_req, res) => {
-  res.sendFile(path.join(__dirname + '/test/jobs/index-test.html'));
-});
+const baseDir = `${__dirname}/jobs-page/build/`
+app.use(express.static(`${baseDir}`))
+app.get('/test/jobs', (req, res) => res.sendFile('index.html' , { root : baseDir } ))
 
 const server = http.createServer(app);
 const port = 8000;
