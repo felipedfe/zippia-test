@@ -1,5 +1,4 @@
 const http = require('http');
-const path = require('path');
 const express = require('express');
 const cors = require('cors');
 
@@ -7,7 +6,6 @@ const app = express();
 // Adicionei o Cors, pois estava tendo problemas com o acesso à API
 app.use(cors());
 app.use(express.json());
-// app.use(express.static('/jobs-page/build'));
 
 // Aqui é onde o site estático é acessado
 const baseDir = `${__dirname}/jobs-page/build/`
