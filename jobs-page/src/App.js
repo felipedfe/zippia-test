@@ -22,14 +22,12 @@ function App() {
     recentJobs ? setButtonText("Recent Jobs") : setButtonText("All Jobs")
   };
 
-  // Não sei se foi exatamente a melhor solução, mas como entendi que no banco era calculado
-  // o valor da chave postedDate, resolvi usá-la para filtrar as vagas mais recentes
   const filterDate = (list) => {
-    return list.filter((job) => {
-      return (job.postedDate.includes("d") && 
-        parseInt(job.postedDate.split("d")[0]) <= 7) || 
-        job.postedDate.includes("h")
-    })
+    const date = new Date();
+    date.setDate(date.getDate() - 7)
+    const dateString = date.toISOString()
+
+    return list.filter((job)=> job.OBJpostingDate > dateString)
   };
 
   // A lista é sempre filtrada em relação ao nome da empresa. Quando a opcão do
@@ -46,8 +44,9 @@ function App() {
   // Aqui pegamos as resposta da API e guardamos no estado do componente
   useEffect(() => {
     getJobs().then((data => setJobsList(data.data.jobs)));
+    console.log(jobsList)
   }, []);
-  
+
   return (
     <main>
       <nav>
@@ -61,7 +60,7 @@ function App() {
         </button>
       </nav>
       <section className="jobs-list">
-      {filter().map((job) => <CardJob key={job.jobId} job={job}/>)}
+        {filter().map((job) => <CardJob key={job.jobId} job={job} />)}
       </section>
     </main>
   );
